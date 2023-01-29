@@ -6,6 +6,9 @@ use App\Models\JobBoard\Tag;
 
 trait BelongsToManyTags
 {
+    /**
+     * @var string
+     */
     public static $REL_TAGS = 'tags';
 
     /**

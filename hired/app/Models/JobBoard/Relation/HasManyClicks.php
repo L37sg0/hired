@@ -6,8 +6,14 @@ use App\Models\JobBoard\Click;
 
 trait HasManyClicks
 {
-    public static $REL_CLICKS;
+    /**
+     * @var string
+     */
+    public static $REL_CLICKS = 'clicks';
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function clicks()
     {
         return $this->hasMany(Click::class);

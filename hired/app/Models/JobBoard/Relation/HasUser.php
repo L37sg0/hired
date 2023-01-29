@@ -4,7 +4,7 @@ namespace App\Models\JobBoard\Relation;
 
 use App\Models\User;
 
-trait BelongsToUser
+trait HasUser
 {
     /**
      * @var string
@@ -12,10 +12,9 @@ trait BelongsToUser
     public static $REL_USER = 'user';
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+    public function user() {
+        return $this->hasOne(User::class);
     }
 }
