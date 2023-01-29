@@ -1,0 +1,7 @@
+.idea
+.env
+hired/.env
+hired/vendor
+meili_data
+node_modules
+hired/storage
