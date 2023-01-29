@@ -3,9 +3,10 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\FailedJob as Model;
+use App\Models\JobBoard\ListingTag as Model;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -14,13 +15,8 @@ return new class extends Migration {
     public function up()
     {
         Schema::create(Model::TABLE_NAME, function (Blueprint $table) {
-            $table->id();
-            $table->string(Model::FIELD_UUID)->unique();
-            $table->text(Model::FIELD_CONNECTION);
-            $table->text(Model::FIELD_QUEUE);
-            $table->longText(Model::FIELD_PAYLOAD);
-            $table->longText(Model::FIELD_EXCEPTION);
-            $table->timestamp(Model::FIELD_FAILED_AT)->useCurrent();
+            $table->unsignedBigInteger(Model::FIELD_LISTING_ID);
+            $table->unsignedBigInteger(Model::FIELD_TAG_ID);
         });
     }
 
