@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Models\JobBoard;
+namespace App\Models\JobBoard\Gig;
 
 use App\Models\JobBoard\Relation\BelongsToGig;
-use App\Models\JobBoard\Relation\BelongsToListing;
+use App\Models\JobBoard\Relation\HasManyOptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Click extends Model implements ClickFields
+class GigPrice extends Model implements GigPriceFields
 {
     use HasFactory;
-    use BelongsToListing;
     use BelongsToGig;
+    use HasManyOptions;
 
     protected $table    = self::TABLE_NAME;
     protected $fillable = self::FILLABLE;
-
 }
