@@ -15,13 +15,15 @@ interface GigPriceFields
     public const FIELD_DESCRIPTION          = 'description';
     public const FIELD_DELIVERY_DAYS        = 'delivery_days';
     public const FIELD_NUMBER_OF_REVISIONS  = 'number_of_revisions';
+    public const FIELD_VALUE                = 'value';
 
     public const FILLABLE = [
         self::FIELD_GIG_ID,
         self::FIELD_TYPE,
         self::FIELD_DESCRIPTION,
         self::FIELD_DELIVERY_DAYS,
-        self::FIELD_NUMBER_OF_REVISIONS
+        self::FIELD_NUMBER_OF_REVISIONS,
+        self::FIELD_VALUE
     ];
 
     public const CASTS = [

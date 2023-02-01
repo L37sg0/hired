@@ -19,6 +19,8 @@ interface ListingFields
     public const FIELD_IS_HIGHLIGHTED   = 'is_highlighted';
     public const FIELD_IS_ACTIVE        = 'is_active';
     public const FIELD_CONTENT          = 'content';
+    public const FIELD_PRICE_VALUE      = 'price_value';
+    public const FIELD_WORKING_HOURS    = 'working_hours';
     public const FIELD_APPLY_LINK       = 'apply_link';
 
     public const FILLABLE = [
@@ -31,6 +33,8 @@ interface ListingFields
         self::FIELD_IS_HIGHLIGHTED,
         self::FIELD_IS_ACTIVE,
         self::FIELD_CONTENT,
+        self::FIELD_PRICE_VALUE,
+        self::FIELD_WORKING_HOURS,
         self::FIELD_APPLY_LINK,
     ];
 

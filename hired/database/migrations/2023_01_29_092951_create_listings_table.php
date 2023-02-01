@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Globals;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +18,8 @@ return new class extends Migration
     {
         Schema::create(Model::TABLE_NAME, function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger(Model::FIELD_USER_ID);
+            $table->foreignId(Model::FIELD_USER_ID)
+                ->constrained(User::TABLE_NAME)->onDelete(Globals::ON_DELETE_CASCADE);
             $table->string(Model::FIELD_TITLE);
             $table->string(Model::FIELD_SLUG);
             $table->string(Model::FIELD_COMPANY);
@@ -25,6 +28,8 @@ return new class extends Migration
             $table->boolean(Model::FIELD_IS_HIGHLIGHTED);
             $table->boolean(Model::FIELD_IS_ACTIVE);
             $table->text(Model::FIELD_CONTENT);
+            $table->integer(Model::FIELD_PRICE_VALUE);
+            $table->integer(Model::FIELD_WORKING_HOURS);
             $table->string(Model::FIELD_APPLY_LINK);
             $table->timestamps();
         });

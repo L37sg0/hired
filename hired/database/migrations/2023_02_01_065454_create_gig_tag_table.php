@@ -1,9 +1,12 @@
 <?php
 
+use App\Models\Globals;
+use App\Models\JobBoard\Gig\Gig;
+use App\Models\JobBoard\Tag;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\JobBoard\Gig\Gig as Model;
+use App\Models\JobBoard\Gig\GigTag as Model;
 
 return new class extends Migration
 {
@@ -15,15 +18,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create(Model::TABLE_NAME, function (Blueprint $table) {
-            $table->id();
-            $table->string(Model::FIELD_USER_ID);
-            $table->string(Model::FIELD_TITLE);
-            $table->string(Model::FIELD_SLUG);
-            $table->string(Model::FIELD_LOGO);
-            $table->string(Model::FIELD_IS_HIGHLIGHTED);
-            $table->string(Model::FIELD_IS_ACTIVE);
-            $table->string(Model::FIELD_CONTENT);
-            $table->timestamps();
+            $table->foreignId(Model::FIELD_GIG_ID)
+                ->constrained(Gig::TABLE_NAME)->onDelete(Globals::ON_DELETE_CASCADE);
+            $table->foreignId(Model::FIELD_TAG_ID)
+                ->constrained(Tag::TABLE_NAME)->onDelete(Globals::ON_DELETE_CASCADE);
         });
     }
 
