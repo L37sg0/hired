@@ -35,6 +35,8 @@ class ListingFactory extends Factory
             Model::FIELD_IS_HIGHLIGHTED => (rand(1,9) > 7),
             Model::FIELD_IS_ACTIVE      => (rand(1, 9) > 4),
             Model::FIELD_CONTENT        => $content,
+            Model::FIELD_PRICE_VALUE    => rand(10,1000),
+            Model::FIELD_WORKING_HOURS  => rand(10,100),
             Model::FIELD_APPLY_LINK     => $this->faker->url,
             Model::FIELD_CREATED_AT     => $datetime,
             Model::FIELD_UPDATED_AT     => $datetime
