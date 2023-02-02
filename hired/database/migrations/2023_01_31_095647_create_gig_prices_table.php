@@ -2,11 +2,10 @@
 
 use App\Models\Globals;
 use App\Models\JobBoard\Gig\Gig;
-use App\Models\JobBoard\Listing;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\JobBoard\Click as Model;
+use App\Models\JobBoard\Gig\GigPrice as Model;
 
 return new class extends Migration
 {
@@ -19,12 +18,13 @@ return new class extends Migration
     {
         Schema::create(Model::TABLE_NAME, function (Blueprint $table) {
             $table->id();
-            $table->foreignId(Model::FIELD_LISTING_ID)
-                ->nullable()->constrained(Listing::TABLE_NAME)->onDelete(Globals::ON_DELETE_CASCADE);
             $table->foreignId(Model::FIELD_GIG_ID)
-                ->nullable()->constrained(Gig::TABLE_NAME)->onDelete(Globals::ON_DELETE_CASCADE);
-            $table->text(Model::FIELD_USER_AGENT)->nullable();
-            $table->string(Model::FIELD_IP)->nullable();
+                ->constrained(Gig::TABLE_NAME)->onDelete(Globals::ON_DELETE_CASCADE);
+            $table->string(Model::FIELD_TYPE);
+            $table->string(Model::FIELD_DESCRIPTION);
+            $table->string(Model::FIELD_DELIVERY_DAYS);
+            $table->string(Model::FIELD_NUMBER_OF_REVISIONS);
+            $table->integer(Model::FIELD_VALUE);
             $table->timestamps();
         });
     }

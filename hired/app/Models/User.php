@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\JobBoard\Relation\HasManyGigs;
 use App\Models\JobBoard\Relation\HasManyListings;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,6 +18,7 @@ class User extends Authenticatable implements UserFields
     use Notifiable;
     use Billable;
     use HasManyListings;
+    use HasManyGigs;
 
     protected $table    = self::TABLE_NAME;
     protected $fillable = self::FILLABLE;
