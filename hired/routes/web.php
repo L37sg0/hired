@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('jobboard.layouts.app');
+    return view('jobboard.layouts.components.jobs-listing');
 });
 
 Route::get('/dashboard', function () {
