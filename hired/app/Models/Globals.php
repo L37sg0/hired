@@ -4,6 +4,8 @@ namespace App\Models;
 
 interface Globals
 {
+    public const THEME = 'jobboard';
+
     public const CAST_FORMAT_DATETIME_YMD   = 'datetime:Y-m-d';
     public const CAST_FORMAT_JSON           = 'json';
     public const CAST_FORMAT_ARRAY          = 'array';

@@ -11,9 +11,9 @@
 </head>
 <body class="d-flex h-auto text-center text-bg-dark">
 <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    @include('jobboard.layouts.components.header')
-    @yield('content')
-    @include('jobboard.layouts.components.footer')
+    <x-jobboard::layout.header></x-jobboard::layout.header>
+    {{ $slot }}
+    <x-jobboard::layout.footer></x-jobboard::layout.footer>
 </div>
 </body>
 </html>
