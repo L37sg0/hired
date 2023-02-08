@@ -1,6 +1,6 @@
 <?php
 
-namespace Resources\Theme\JobBoard;
+namespace app\Theme\JobBoard;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;

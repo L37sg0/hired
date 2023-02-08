@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('jobboard::layout.jobs-listing');
+    return view('jobboard::layout.job-gig-view');
 });
 
 Route::get('/dashboard', function () {

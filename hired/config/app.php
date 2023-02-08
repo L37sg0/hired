@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
-use Resources\Theme\JobBoard\ThemeServiceProvider;
+use App\Theme\JobBoard\ThemeServiceProvider;
 
 return [
 

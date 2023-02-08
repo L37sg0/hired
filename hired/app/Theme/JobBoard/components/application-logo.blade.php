@@ -1,5 +1,5 @@
 <a href="/">
-<div class="mb-4">
+<div class="mb-2">
     <div style="transform: scale(1);">
         <svg width="320" height="76.21093134557704" viewBox="0 0 320 76.21093134557704" class="css-1j8o68f">
             <defs id="SvgjsDefs1006"></defs>
