@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{env('APP_NAME')}}</title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/font-awesome-6.3.0.min.css')}}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{asset('css/cover.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -17,5 +18,8 @@
     </div>
     <x-jobboard::layout.footer></x-jobboard::layout.footer>
 </div>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/jquery-3.6.3.min.js')}}"></script>
+<script src="{{asset('js/popper-2.11.6.min.js')}}"></script>
 </body>
 </html>
