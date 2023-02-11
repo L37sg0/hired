@@ -14,12 +14,14 @@ interface UserFields
     public const FIELD_EMAIL_VERIFIED_AT    = 'email_verified_at';
     public const FIELD_PASSWORD             = 'password';
     public const FIELD_REMEMBER_TOKEN       = 'remember_token';
+    public const FIELD_ROLE                 = 'role';
 
     public const FILLABLE = [
         self::FIELD_NAME,
         self::FIELD_EMAIL,
         self::FIELD_PASSWORD,
         self::FIELD_EMAIL_VERIFIED_AT,
+        self::FIELD_ROLE
     ];
 
     public const HIDDEN = [
@@ -28,7 +30,8 @@ interface UserFields
     ];
 
     public const CASTS = [
-        self::FIELD_EMAIL_VERIFIED_AT => Globals::CAST_FORMAT_DATETIME_YMD
+        self::FIELD_EMAIL_VERIFIED_AT   => Globals::CAST_FORMAT_DATETIME_YMD,
+        self::FIELD_ROLE                => Role::class
     ];
 
 }

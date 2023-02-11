@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->timestamp(Model::FIELD_EMAIL_VERIFIED_AT)->nullable();
             $table->string(Model::FIELD_PASSWORD);
             $table->rememberToken();
+            $table->tinyInteger(Model::FIELD_ROLE);
             $table->timestamps();
         });
     }
