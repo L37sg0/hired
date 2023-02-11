@@ -20,9 +20,12 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $firstName  = $this->faker->firstName;
+        $lastName   = $this->faker->lastName;
+
         return [
-            Model::FIELD_NAME                => $this->faker->firstName . ' ' . $this->faker->lastName,
-            Model::FIELD_EMAIL               => $this->faker->unique()->safeEmail(),
+            Model::FIELD_NAME                => $firstName . ' ' . $lastName,
+            Model::FIELD_EMAIL               => strtolower($firstName . '.' . $lastName) . rand(1,1000) . '@example.com',
             Model::FIELD_EMAIL_VERIFIED_AT   => now(),
             Model::FIELD_PASSWORD            => Hash::make('password'),
             Model::FIELD_REMEMBER_TOKEN      => Str::random(10),

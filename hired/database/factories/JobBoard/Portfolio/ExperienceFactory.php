@@ -18,7 +18,7 @@ class ExperienceFactory extends Factory
     public function definition()
     {
         $startDate  = $this->faker->date();
-        $endDate    = date('Y-m-d', strtotime($startDate) . "+1 Year");
+        $endDate    = date('Y-m-d', strtotime($startDate . "+1 Year"));
 
         return [
             Model::FIELD_START_DATE     => $startDate,

@@ -22,7 +22,7 @@ return new class extends Migration
                 ->constrained(Portfolio::TABLE_NAME)->onDelete(Globals::ON_DELETE_CASCADE);
             $table->string(Model::FIELD_TITLE);
             $table->tinyText(Model::FIELD_DESCRIPTION);
-            $table->lineString(Model::FIELD_IMAGE_URL);
+            $table->string(Model::FIELD_IMAGE_URL);
             $table->timestamps();
         });
     }

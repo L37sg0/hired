@@ -14,7 +14,7 @@ trait HasPortfolio
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function user()
+    public function portfolio()
     {
         return $this->hasOne(Portfolio::class);
     }
