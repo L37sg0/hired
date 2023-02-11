@@ -12,11 +12,13 @@ interface PortfolioFields
 
     public const FIELD_USER_ID          = 'user_id';
     public const FIELD_PORTFOLIO_TYPE   = 'portfolio_type';
+    public const FIELD_AVATAR_URL       = 'avatar_url';
     public const FIELD_ABOUT            = 'about';
 
     public const FILLABLE = [
         self::FIELD_USER_ID,
         self::FIELD_PORTFOLIO_TYPE,
+        self::FIELD_AVATAR_URL,
         self::FIELD_ABOUT,
     ];
 

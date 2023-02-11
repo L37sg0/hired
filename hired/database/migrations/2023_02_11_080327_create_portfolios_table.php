@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId(Model::FIELD_USER_ID)
                 ->constrained(User::TABLE_NAME)->onDelete(Globals::ON_DELETE_CASCADE);
             $table->tinyInteger(Model::FIELD_PORTFOLIO_TYPE);
+            $table->lineString(Model::FIELD_AVATAR_URL);
             $table->text(Model::FIELD_ABOUT);
             $table->timestamps();
         });

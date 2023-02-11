@@ -6,13 +6,14 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Models\User as Model;
 
 class UserFactory extends Factory
 {
     /**
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Model::class;
 
     /**
      * @return array|mixed[]
@@ -20,11 +21,11 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            USER::FIELD_NAME                => fake()->name(),
-            USER::FIELD_EMAIL               => fake()->unique()->safeEmail(),
-            USER::FIELD_EMAIL_VERIFIED_AT   => now(),
-            USER::FIELD_PASSWORD            => Hash::make('password'),
-            USER::FIELD_REMEMBER_TOKEN      => Str::random(10),
+            Model::FIELD_NAME                => $this->faker->firstName . ' ' . $this->faker->lastName,
+            Model::FIELD_EMAIL               => $this->faker->unique()->safeEmail(),
+            Model::FIELD_EMAIL_VERIFIED_AT   => now(),
+            Model::FIELD_PASSWORD            => Hash::make('password'),
+            Model::FIELD_REMEMBER_TOKEN      => Str::random(10),
         ];
     }
 
@@ -36,7 +37,7 @@ class UserFactory extends Factory
     public function unverified()
     {
         return $this->state(fn (array $attributes) => [
-            User::FIELD_EMAIL_VERIFIED_AT => null,
+            Model::FIELD_EMAIL_VERIFIED_AT => null,
         ]);
     }
 }
