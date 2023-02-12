@@ -1,0 +1,32 @@
+@php
+    use App\Models\JobBoard\Listing as Model;
+    use App\Models\JobBoard\Tag;use App\Models\User;
+    /** @var Model $model */
+/** @var Tag $tag */
+@endphp
+
+@props([
+    'model' => null
+])
+
+<div class="col">
+    <div class="card">
+        <div class="card-body text-dark">
+            <h3 class="card-title">{{$model->getAttribute(Model::FIELD_TITLE)}}</h3>
+            <div>
+                @foreach($model->getAttribute(Model::$REL_TAGS) as $tag)
+                    <span class="badge text-bg-dark text-light">{{$tag->getAttribute(Tag::FIELD_SLUG)}}</span>
+                @endforeach
+            </div>
+            <p class="card-text">{{substr($model->getAttribute(Model::FIELD_CONTENT), 0 , 96) . '...'}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">{{__('View')}}</button>
+                </div>
+                <p>{{__('Published by')}}: <a
+                        href="">{{$model->getAttribute(Model::$REL_USER)->getAttribute(User::FIELD_NAME)}}</a></p>
+                <h3 class="text-muted">{{$model->getAttribute(Model::FIELD_PRICE_VALUE)}}$</h3>
+            </div>
+        </div>
+    </div>
+</div>

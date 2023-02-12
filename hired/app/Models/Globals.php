@@ -26,4 +26,47 @@ interface Globals
     public const FORM_FIELD_CONFIRMED   = 'confirmed';
 
     public const SEARCH_DIVIDER = ', #';
+
+    public const MENU_GUEST = [
+        [
+            'route' => 'job.list',
+            'label' => 'Jobs'
+        ],
+        [
+            'route' => 'gig.list',
+            'label' => 'Gigs'
+        ],
+        [
+            'route' => 'login',
+            'label' => 'Login'
+        ],
+        [
+            'route' => 'register',
+            'label' => 'Register'
+        ],
+    ];
+    public const MENU_AUTH  = [
+        [
+            'route' => 'job.list',
+            'label' => 'Jobs'
+        ],
+        [
+            'route' => 'gig.list',
+            'label' => 'Gigs'
+        ],
+        [
+            'route' => 'portfolio',
+            'label' => 'My Portfolio'
+        ],
+        [
+            'route' => 'profile',
+            'label' => 'My profile'
+        ],
+
+        [
+            'route' => 'logout',
+            'label' => 'Logout'
+        ],
+
+    ];
 }

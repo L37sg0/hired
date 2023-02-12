@@ -1,3 +1,12 @@
+@php use App\Models\JobBoard\Listing as Model;use App\Models\User; @endphp
+@props([
+    'model' => null
+])
+
+@php
+    /** @var Listing $model */
+@endphp
+
 <div class="col">
     <div class="card">
         <img src="https://www.yola.com/ws/media-library/3a75df090769446bae2d6abd655e1b23/yola-features-cover-1.png">
@@ -19,16 +28,14 @@
             <span class="badge text-bg-dark">Dark</span>
         </div>
         <div class="card-body">
-            <h3 class="card-title text-dark">Someone to create me a website</h3>
-            <p class="card-text text-dark">This is a wider card with supporting text below as a natural
-                lead-in to
-                additional content. This content is a little bit longer.</p>
+            <h3 class="card-title text-dark">{{$model->getAttribute(Model::FIELD_TITLE)}}</h3>
+            <p class="card-text text-dark">{{substr($model->getAttribute(Model::FIELD_CONTENT), 0 , 96) . '...'}}</p>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                 </div>
-                <p>Published by <a href="">Publisher</a></p>
-                <h3 class="text-muted">30$</h3>
+                <p>Published by <a href="">{{$model->getAttribute(Model::$REL_USER)->getAttribute(User::FIELD_NAME)}}</a></p>
+                <h3 class="text-muted">{{$model->getAttribute(Model::FIELD_PRICE_VALUE)}}$</h3>
             </div>
         </div>
     </div>

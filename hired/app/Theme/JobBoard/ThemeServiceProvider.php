@@ -24,8 +24,8 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/components', 'jobboard');
-        Blade::anonymousComponentPath(__DIR__ . '/components', 'jobboard');
+        $this->loadViewsFrom(__DIR__, 'jobboard');
+        Blade::anonymousComponentPath(__DIR__, 'jobboard');
     }
 
 }
