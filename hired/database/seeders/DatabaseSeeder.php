@@ -30,132 +30,118 @@ class DatabaseSeeder extends Seeder
         /**
          * Companies
          */
-        User::factory(20)->create([
-            User::FIELD_ROLE => Role::Company
-        ])->each(function ($user) use ($tags) {
-
-            /** @var User $user */
-            Listing::factory(rand(1, 4))->create([
-                /** @var User $user */
-                Listing::FIELD_USER_ID => $user->getAttribute(User::FIELD_ID)
-            ])->each(function ($listing) use ($tags) {
-                /** @var Listing $listing */
-                $listing->tags()->attach($tags->random(2));
-            });
-
-            Portfolio::factory()->create([
-                Portfolio::FIELD_USER_ID => $user->getAttribute(User::FIELD_ID),
-                Portfolio::FIELD_PORTFOLIO_TYPE => $user->getAttribute(User::FIELD_ROLE)->value
-            ]);
-
-        })->each(function ($user) {
-            /** @var Portfolio $portfolio */
-            $portfolio = $user->getAttribute(User::$REL_PORTFOLIO);
-            Experience::factory(rand(1, 5))->create([
-                Experience::FIELD_PORTFOLIO_ID => $portfolio->getAttribute(Portfolio::FIELD_ID)
-            ]);
-
-            Project::factory(rand(2, 4))->create([
-                Project::FIELD_PORTFOLIO_ID => $portfolio->getAttribute(Portfolio::FIELD_ID)
-            ]);
-        });
+        $this->createUsersWithRole(Role::Company, $tags, 20);
 
         /**
          * Freelancers
          */
-        User::factory(20)->create([
-            User::FIELD_ROLE => Role::Freelancer
-        ])->each(function ($user) use ($tags) {
-
-            /** @var User $user */
-            Gig::factory(rand(1, 3))->create([
-                Gig::FIELD_USER_ID => $user->getAttribute(User::FIELD_ID)
-                /** @var Gig $gig */
-            ])->each(function ($gig) use ($tags) {
-                /** @var Gig $gig */
-                $gig->tags()->attach($tags->random(rand(2, 5)));
-            })->each(function ($gig) {
-                /** @var Gig $gig */
-                GigPrice::factory()->create([
-                    GigPrice::FIELD_GIG_ID => $gig->getAttribute(Gig::FIELD_ID)
-                ]);
-            })->each(function ($gig) {
-                foreach ($gig->prices as $gigPrice) {
-                    GigPriceOption::factory(rand(1, 4))->create([
-                        GigPriceOption::FIELD_GIG_PRICE_ID => $gigPrice->id
-                    ]);
-                }
-            });
-
-            Portfolio::factory()->create([
-                Portfolio::FIELD_USER_ID => $user->getAttribute(User::FIELD_ID),
-                Portfolio::FIELD_PORTFOLIO_TYPE => $user->getAttribute(User::FIELD_ROLE)->value
-            ]);
-
-        })->each(function ($user) {
-            /** @var Portfolio $portfolio */
-            $portfolio = $user->getAttribute(User::$REL_PORTFOLIO);
-            Experience::factory(rand(1, 5))->create([
-                Experience::FIELD_PORTFOLIO_ID => $portfolio->getAttribute(Portfolio::FIELD_ID)
-            ]);
-
-            Project::factory(rand(2, 4))->create([
-                Project::FIELD_PORTFOLIO_ID => $portfolio->getAttribute(Portfolio::FIELD_ID)
-            ]);
-        });
+        $this->createUsersWithRole(Role::Freelancer, $tags, 20);
 
         /**
          * Agencies
          */
-        User::factory(20)->create([
-            User::FIELD_ROLE => Role::Agency
-        ])->each(function ($user) use ($tags) {
+        $this->createUsersWithRole(Role::Agency, $tags, 20);
+    }
 
-            /** @var User $user */
-            Listing::factory(rand(1, 4))->create([
-                /** @var User $user */
-                Listing::FIELD_USER_ID => $user->getAttribute(User::FIELD_ID)
-            ])->each(function ($listing) use ($tags) {
-                /** @var Listing $listing */
-                $listing->tags()->attach($tags->random(2));
-            });
+    /**
+     * @param Role $role
+     * @param $tags
+     * @param int $nmbUsers
+     * @return void
+     */
+    public function createUsersWithRole(Role $role, $tags, int $nmbUsers) {
 
-            Gig::factory(rand(1, 3))->create([
-                Gig::FIELD_USER_ID => $user->getAttribute(User::FIELD_ID)
-                /** @var Gig $gig */
-            ])->each(function ($gig) use ($tags) {
-                /** @var Gig $gig */
-                $gig->tags()->attach($tags->random(rand(2, 5)));
-            })->each(function ($gig) {
+        User::factory($nmbUsers)->create([
+            User::FIELD_ROLE => $role
+        ])->each(function ($user) use ($tags, $role) {
 
-                /** @var Gig $gig */
-                GigPrice::factory()->create([
-                    GigPrice::FIELD_GIG_ID => $gig->getAttribute(Gig::FIELD_ID)
-                ]);
+            if ($role !== Role::Freelancer) {
+                $this->createListings($user, $tags);
+            }
 
-            })->each(function ($gig) {
-                foreach ($gig->prices as $gigPrice) {
-                    GigPriceOption::factory(rand(1, 4))->create([
-                        GigPriceOption::FIELD_GIG_PRICE_ID => $gigPrice->id
-                    ]);
-                }
-            });
+            if ($role !== Role::Company) {
+                $this->createGigs($user, $tags);
+            }
 
-            Portfolio::factory()->create([
-                Portfolio::FIELD_USER_ID => $user->getAttribute(User::FIELD_ID),
-                Portfolio::FIELD_PORTFOLIO_TYPE => $user->getAttribute(User::FIELD_ROLE)->value
-            ]);
+            $this->createPortfolio($user);
 
         })->each(function ($user) {
-        /** @var Portfolio $portfolio */
-            $portfolio = $user->getAttribute(User::$REL_PORTFOLIO);
-            Experience::factory(rand(1, 5))->create([
-                Experience::FIELD_PORTFOLIO_ID => $portfolio->getAttribute(Portfolio::FIELD_ID)
+            $this->createPortfolioParts($user);
+        });
+    }
+
+    /**
+     * @param User $user
+     * @param $tags
+     * @return void
+     */
+    public function createListings(User $user, $tags) {
+
+        Listing::factory(rand(1, 4))->create([
+            /** @var User $user */
+            Listing::FIELD_USER_ID => $user->getAttribute(User::FIELD_ID)
+        ])->each(function ($listing) use ($tags) {
+            /** @var Listing $listing */
+            $listing->tags()->attach($tags->random(2));
+        });
+    }
+
+    /**
+     * @param User $user
+     * @param $tags
+     * @return void
+     */
+    public function createGigs(User $user, $tags) {
+
+        Gig::factory(rand(1, 3))->create([
+            Gig::FIELD_USER_ID => $user->getAttribute(User::FIELD_ID)
+            /** @var Gig $gig */
+        ])->each(function ($gig) use ($tags) {
+            /** @var Gig $gig */
+            $gig->tags()->attach($tags->random(rand(2, 5)));
+        })->each(function ($gig) {
+
+            /** @var Gig $gig */
+            GigPrice::factory()->create([
+                GigPrice::FIELD_GIG_ID => $gig->getAttribute(Gig::FIELD_ID)
             ]);
 
-            Project::factory(rand(2, 4))->create([
-                Project::FIELD_PORTFOLIO_ID => $portfolio->getAttribute(Portfolio::FIELD_ID)
-            ]);
+        })->each(function ($gig) {
+            foreach ($gig->prices as $gigPrice) {
+                GigPriceOption::factory(rand(1, 4))->create([
+                    GigPriceOption::FIELD_GIG_PRICE_ID => $gigPrice->id
+                ]);
+            }
         });
+    }
+
+    /**
+     * @param User $user
+     * @return void
+     */
+    public function createPortfolio(User $user) {
+
+        Portfolio::factory()->create([
+            Portfolio::FIELD_USER_ID => $user->getAttribute(User::FIELD_ID),
+            Portfolio::FIELD_PORTFOLIO_TYPE => $user->getAttribute(User::FIELD_ROLE)->value
+        ]);
+    }
+
+    /**
+     * @param User $user
+     * @return void
+     */
+    public function createPortfolioParts(User $user) {
+
+        /** @var Portfolio $portfolio */
+        $portfolio = $user->getAttribute(User::$REL_PORTFOLIO);
+
+        Experience::factory(rand(1, 5))->create([
+            Experience::FIELD_PORTFOLIO_ID => $portfolio->getAttribute(Portfolio::FIELD_ID)
+        ]);
+
+        Project::factory(rand(2, 4))->create([
+            Project::FIELD_PORTFOLIO_ID => $portfolio->getAttribute(Portfolio::FIELD_ID)
+        ]);
     }
 }
