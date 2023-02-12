@@ -1,11 +1,14 @@
 <?php
 
+use App\Models\Globals;
+use App\Models\JobBoard\Portfolio\Portfolio;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User as Model;
+use App\Models\JobBoard\Portfolio\Project as Model;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -15,12 +18,11 @@ return new class extends Migration {
     {
         Schema::create(Model::TABLE_NAME, function (Blueprint $table) {
             $table->id();
-            $table->string(Model::FIELD_NAME);
-            $table->string(Model::FIELD_EMAIL)->unique();
-            $table->timestamp(Model::FIELD_EMAIL_VERIFIED_AT)->nullable();
-            $table->string(Model::FIELD_PASSWORD);
-            $table->rememberToken();
-            $table->tinyInteger(Model::FIELD_ROLE);
+            $table->foreignId(Model::FIELD_PORTFOLIO_ID)
+                ->constrained(Portfolio::TABLE_NAME)->onDelete(Globals::ON_DELETE_CASCADE);
+            $table->string(Model::FIELD_TITLE);
+            $table->tinyText(Model::FIELD_DESCRIPTION);
+            $table->string(Model::FIELD_IMAGE_URL);
             $table->timestamps();
         });
     }
