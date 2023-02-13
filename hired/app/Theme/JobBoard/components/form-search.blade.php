@@ -1,4 +1,4 @@
-<form class="me-2"
+<form class="me-2 my-3"
       role="search"
       action="{{request()->url()}}"
       method="post">

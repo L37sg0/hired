@@ -1,6 +1,7 @@
-
-    @php(dd($heroText))
-
+@props([
+    'heroText' => $heroText ?? false,
+    'sloganText' => $sloganText ?? false
+])
 <!DOCTYPE html>
 <html class="h-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -15,7 +16,9 @@
 </head>
 <body class="d-flex h-auto text-center text-bg-dark">
 <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <x-jobboard::layout.header :heroText="{{$heroText}}" :sloganText="$sloganText"></x-jobboard::layout.header>
+    <x-jobboard::layout.header :heroText="$heroText"
+                               :sloganText="$sloganText"
+    />
     <div class="mb-4">
         {{ $slot }}
     </div>

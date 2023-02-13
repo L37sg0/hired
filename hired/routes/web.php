@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Gig\Gig;
 use App\Http\Controllers\Job\Job;
 use App\Http\Controllers\Profile\Profile;
 use Illuminate\Support\Facades\Route;
@@ -16,17 +17,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::match(['get', 'post'],'/', function () {
-    return redirect(\route('job.list'));
+//    return view('jobboard::job.list');
+    return redirect(route('job.list'));
 });
 /**
  * Job routes
  */
-Route::group(['as' => 'job.', 'prefix' => 'jobs'], static function() {
+Route::group(['as' => 'job.', 'prefix' => 'jobs'], static function () {
     Route::match(['get', 'post'], '', [Job::class, 'index'])->name('list');
-    Route::get('preview/{job}',[Job::class, 'preview'])->name('preview');
+    Route::get('preview/{job}', [Job::class, 'preview'])->name('preview');
     Route::post('create', [Job::class, 'create'])->name('create');
     Route::post('update/{job}', [Job::class, 'update'])->name('update');
     Route::post('delete/{job}', [Job::class, 'destroy'])->name('delete');
+});
+/**
+ * Gig routes
+ */
+Route::group(['as' => 'gig.', 'prefix' => 'gigs'], static function () {
+    Route::match(['get', 'post'], '', [Gig::class, 'index'])->name('list');
+    Route::get('preview/{gig}', [Gig::class, 'preview'])->name('preview');
+    Route::post('create', [Gig::class, 'create'])->name('create');
+    Route::post('update/{gig}', [Gig::class, 'update'])->name('update');
+    Route::post('delete/{gig}', [Gig::class, 'destroy'])->name('delete');
 });
 
 Route::get('/dashboard', function () {

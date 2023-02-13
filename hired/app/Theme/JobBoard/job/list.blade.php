@@ -1,5 +1,8 @@
+@props([
+    'heroText' => $heroText ?? false,
+    'sloganText' => $sloganText ?? false
+])
 <x-jobboard::layout.app :heroText="$heroText" :sloganText="$sloganText">
-    <x-slot:heroText>{{$heroText}}</x-slot:heroText>
     <main class="px-3">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
