@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 @foreach($collection as $model)
-                <x-jobboard::job.element :model="$model" :path="$path"/>
+                <x-jobboard::gig.element :model="$model" :path="$path"/>
                 @endforeach
             </div>
         </div>

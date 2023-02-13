@@ -52,7 +52,7 @@ class Gig extends Controller
     public function preview($id) {
         $model = Model::find($id);
 
-        return view(Config::getTheme() . "$this->path", compact('model'));
+        return view(Config::getTheme() . "$this->path.preview", compact('model'));
     }
 
     /**

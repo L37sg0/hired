@@ -52,7 +52,7 @@ class Job extends Controller
     {
         $model = Model::find($id);
 
-        return view(Config::getTheme() . "$this->path", compact('model'));
+        return view(Config::getTheme() . "$this->path.preview", compact('model'));
     }
 
     /**

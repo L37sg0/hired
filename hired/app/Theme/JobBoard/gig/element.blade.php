@@ -1,12 +1,16 @@
 @php
-    use App\Models\JobBoard\Listing as Model;
+    use App\Models\JobBoard\Gig\Gig as Model;
     use App\Models\JobBoard\Portfolio\Portfolio;
+    use App\Models\JobBoard\Gig\GigPrice;
     use App\Models\JobBoard\Tag;
     use App\Models\User;
     /** @var Model $model */
     /** @var Tag $tag */
+    /** @var GigPrice $price */
+    $price = $model->getAttribute(Model::$REL_PRICES)->first();
     /** @var Portfolio $portfolio */
     $portfolio = $model->getAttribute(Model::$REL_USER)->getAttribute(User::$REL_PORTFOLIO);
+
 @endphp
 
 @props([
@@ -26,13 +30,11 @@
             <p class="card-text">{{substr($model->getAttribute(Model::FIELD_CONTENT), 0 , 96) . '...'}}</p>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <a href="{{route("$path.preview", $model)}}" type="button"
-                       class="btn btn-sm btn-outline-secondary">{{__('View')}}</a>
+                    <a href="{{route("$path.preview", $model)}}" type="button" class="btn btn-sm btn-outline-secondary">{{__('View')}}</a>
                 </div>
                 <p>{{__('Published by')}}: <a
-                        href="{{route("portfolio.preview", $portfolio)}}">{{$model->getAttribute(Model::$REL_USER)->getAttribute(User::FIELD_NAME)}}</a>
-                </p>
-                <h3 class="text-muted">{{$model->getAttribute(Model::FIELD_PRICE_VALUE)}}$</h3>
+                        href="{{route("portfolio.preview", $portfolio)}}">{{$model->getAttribute(Model::$REL_USER)->getAttribute(User::FIELD_NAME)}}</a></p>
+                <h3 class="text-muted">{{$price->getAttribute(GigPrice::FIELD_VALUE)}}$</h3>
             </div>
         </div>
     </div>

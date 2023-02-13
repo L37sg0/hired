@@ -55,18 +55,30 @@ interface Globals
             'label' => 'Gigs'
         ],
         [
-            'route' => 'portfolio',
+            'route' => 'portfolio.freelancer.list',
+            'label' => 'Freelancers'
+        ],
+        [
+            'route' => 'portfolio.company.list',
+            'label' => 'Companies'
+        ],
+        [
+            'route' => 'portfolio.agency.list',
+            'label' => 'Agencies'
+        ],
+        [
+            'route' => 'user.portfolio.preview',
             'label' => 'My Portfolio'
         ],
-        [
-            'route' => 'profile',
-            'label' => 'My profile'
-        ],
+//        [
+//            'route' => 'user.profile',
+//            'label' => 'My profile'
+//        ],
 
-        [
-            'route' => 'logout',
-            'label' => 'Logout'
-        ],
+//        [
+//            'route' => 'logout',
+//            'label' => 'Logout'
+//        ],
 
     ];
 }
