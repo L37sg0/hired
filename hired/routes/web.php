@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Gig\Gig;
 use App\Http\Controllers\Job\Job;
+use App\Http\Controllers\Portfolio\Portfolio;
 use App\Http\Controllers\Profile\Profile;
 use Illuminate\Support\Facades\Route;
 
@@ -50,31 +51,19 @@ Route::group(['as' => 'gig.', 'prefix' => 'gigs'], static function () {
 Route::group(['as' => 'portfolio.', 'prefix' => 'portfolios'], static function () {
     Route::middleware('auth')->group(function () {
         Route::group(['as' => 'freelancer.', 'prefix' => 'freelancers'], function () {
-            Route::match(['get', 'post'], '', [Job::class, 'index'])->name('list');
-            Route::get('preview/{portfolio}', [Job::class, 'preview'])->name('preview');
-            Route::post('create', [Job::class, 'create'])->name('create');
-            Route::post('update/{portfolio}', [Job::class, 'update'])->name('update');
-            Route::post('delete/{portfolio}', [Job::class, 'destroy'])->name('delete');
+            Route::get('', [Portfolio::class, 'freelancers'])->name('list');
         });
         Route::group(['as' => 'company.', 'prefix' => 'companies'], function () {
-            Route::match(['get', 'post'], '', [Job::class, 'index'])->name('list');
-            Route::get('preview/{portfolio}', [Job::class, 'preview'])->name('preview');
-            Route::post('create', [Job::class, 'create'])->name('create');
-            Route::post('update/{portfolio}', [Job::class, 'update'])->name('update');
-            Route::post('delete/{portfolio}', [Job::class, 'destroy'])->name('delete');
+            Route::get('', [Portfolio::class, 'companies'])->name('list');
         });
         Route::group(['as' => 'agency.', 'prefix' => 'agencies'], function () {
-            Route::match(['get', 'post'], '', [Job::class, 'index'])->name('list');
-            Route::get('preview/{portfolio}', [Job::class, 'preview'])->name('preview');
-            Route::post('create', [Job::class, 'create'])->name('create');
-            Route::post('update/{portfolio}', [Job::class, 'update'])->name('update');
-            Route::post('delete/{portfolio}', [Job::class, 'destroy'])->name('delete');
+            Route::get('', [Portfolio::class, 'agencies'])->name('list');
         });
-        Route::match(['get', 'post'], '', [Job::class, 'index'])->name('list');
-        Route::get('preview/{portfolio}', [Job::class, 'preview'])->name('preview');
-        Route::post('create', [Job::class, 'create'])->name('create');
-        Route::post('update/{portfolio}', [Job::class, 'update'])->name('update');
-        Route::post('delete/{portfolio}', [Job::class, 'destroy'])->name('delete');
+        Route::match(['get', 'post'], '', [Portfolio::class, 'index'])->name('list');
+        Route::get('preview/{portfolio}', [Portfolio::class, 'preview'])->name('preview');
+        Route::post('create', [Portfolio::class, 'create'])->name('create');
+        Route::post('update/{portfolio}', [Portfolio::class, 'update'])->name('update');
+        Route::post('delete/{portfolio}', [Portfolio::class, 'destroy'])->name('delete');
     });
 });
 
@@ -86,19 +75,20 @@ Route::group(['as' => 'user.', 'prefix' => 'user'], static function () {
      * User portfolio
      */
     Route::group(['as' => 'portfolio.', 'prefix' => 'portfolio'], static function () {
-        Route::match(['get', 'post'], '', [Job::class, 'index'])->name('list');
-        Route::get('preview', [Job::class, 'preview'])->name('preview');
-        Route::post('create', [Job::class, 'create'])->name('create');
-        Route::post('update/{portfolio}', [Job::class, 'update'])->name('update');
-        Route::post('delete/{portfolio}', [Job::class, 'destroy'])->name('delete');
+        Route::match(['get', 'post'], '', [Portfolio::class, 'index'])->name('list');
+        Route::get('preview', [Portfolio::class, 'preview'])->name('preview');
+        Route::get('my-portfolio', [Portfolio::class, 'myPortfolio'])->name('my-portfolio');
+        Route::post('create', [Portfolio::class, 'create'])->name('create');
+        Route::post('update/{portfolio}', [Portfolio::class, 'update'])->name('update');
+        Route::post('delete/{portfolio}', [Portfolio::class, 'destroy'])->name('delete');
     });
     /**
      * User profile
      */
-    Route::group(['as' => 'profile', 'prefix' => 'profile'], static function () {
-        Route::get('', [Profile::class, 'edit'])->name('profile.edit');
-        Route::patch('', [Profile::class, 'update'])->name('profile.update');
-        Route::delete('', [Profile::class, 'destroy'])->name('profile.destroy');
+    Route::group(['as' => 'profile.', 'prefix' => 'profile'], static function () {
+        Route::get('', [Profile::class, 'edit'])->name('edit');
+        Route::patch('', [Profile::class, 'update'])->name('update');
+        Route::delete('', [Profile::class, 'destroy'])->name('destroy');
     });
 });
 

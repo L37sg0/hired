@@ -2,7 +2,7 @@
     @csrf
 </form>
 
-<form method="post" action="{{ route('profile.update') }}">
+<form method="post" action="{{ route('user.profile.update') }}">
     @csrf
     @method('patch')
     <x-jobboard::form-name :value="old('name', $user->name)"/>

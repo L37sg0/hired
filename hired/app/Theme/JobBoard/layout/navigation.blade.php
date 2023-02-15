@@ -14,10 +14,18 @@
             @endphp
             <a class="nav-link fw-bold py-1 px-0 {{$active}}" href="{{route($item['route'])}}">{{$item['label']}}</a>
         @endforeach
+{{--        @if($auth)--}}
+{{--            @php--}}
+{{--                $active = (request()->url() === route('user.portfolio.preview') . "/" . Auth::id()) ? 'active' : '';--}}
+{{--            @endphp--}}
+{{--            <a href="{{route('user.portfolio.preview') . "/" . Auth::id()}}"--}}
+{{--               class="nav-link fw-bold py-1 px-0 {{$active}}">{{__('My Portfolio')}}</a>--}}
+{{--        @endif--}}
         @if($auth)
             <form method="POST" action="{{route('logout')}}">
                 @csrf
-                <button class="nav-link fw-bold py-1 px-0" type="submit">{{__('Logout')}}</button>
+                <a onclick="this.closest('form').submit();return false;"
+                   class="nav-link fw-bold py-1 px-3" role="button" type="submit">{{__('Logout')}}</a>
             </form>
         @endif
     </nav>

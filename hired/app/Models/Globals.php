@@ -67,18 +67,12 @@ interface Globals
             'label' => 'Agencies'
         ],
         [
-            'route' => 'user.portfolio.preview',
+            'route' => 'user.portfolio.my-portfolio',
             'label' => 'My Portfolio'
         ],
-//        [
-//            'route' => 'user.profile',
-//            'label' => 'My profile'
-//        ],
-
-//        [
-//            'route' => 'logout',
-//            'label' => 'Logout'
-//        ],
-
+        [
+            'route' => 'user.profile.edit',
+            'label' => 'My profile'
+        ],
     ];
 }

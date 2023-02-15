@@ -14,14 +14,14 @@
     <link href="{{asset('css/cover.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body class="d-flex h-auto text-center text-bg-dark">
+<body class="d-flex h-auto min-vh-100 text-center text-bg-dark">
 <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <x-jobboard::layout.header :heroText="$heroText"
                                :sloganText="$sloganText"
     />
-    <div class="mb-4">
+{{--    <div class="mb-4">--}}
         {{ $slot }}
-    </div>
+{{--    </div>--}}
     <x-jobboard::layout.footer></x-jobboard::layout.footer>
 </div>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
