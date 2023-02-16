@@ -10,6 +10,7 @@ use App\Models\JobBoard\Listing;
 use App\Models\JobBoard\Portfolio\Contact;
 use App\Models\JobBoard\Portfolio\Experience;
 use App\Models\JobBoard\Portfolio\Portfolio;
+use App\Models\JobBoard\Portfolio\PortfolioType;
 use App\Models\JobBoard\Portfolio\Project;
 use App\Models\JobBoard\Tag;
 use App\Models\Role;
@@ -84,12 +85,25 @@ class DatabaseSeeder extends Seeder
         $user = new User();
         $user->fill([
             User::FIELD_NAME                => 'Administrator',
-            User::FIELD_EMAIL               => 'admin@admin.com',
+            User::FIELD_EMAIL               => 'admin@admin.bg',
             User::FIELD_EMAIL_VERIFIED_AT   => Carbon::today(),
             User::FIELD_PASSWORD            => Hash::make('password'),
             User::FIELD_REMEMBER_TOKEN      => '',
             User::FIELD_ROLE                => Role::Administrator,
         ])->save();
+
+        $portfolio = Portfolio::factory()->create([
+            Portfolio::FIELD_USER_ID => $user->getAttribute(User::FIELD_ID),
+            Portfolio::FIELD_PORTFOLIO_TYPE => PortfolioType::Agency
+        ]);
+
+        Experience::factory(3)->create([
+            Experience::FIELD_PORTFOLIO_ID => $portfolio->getAttribute(Portfolio::FIELD_ID)
+        ]);
+
+        Project::factory(3)->create([
+            Project::FIELD_PORTFOLIO_ID => $portfolio->getAttribute(Portfolio::FIELD_ID)
+        ]);
     }
 
     /**

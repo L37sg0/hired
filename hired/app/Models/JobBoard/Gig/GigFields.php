@@ -18,6 +18,7 @@ interface GigFields
     public const FIELD_IS_HIGHLIGHTED   = 'is_highlighted';
     public const FIELD_IS_ACTIVE        = 'is_active';
     public const FIELD_CONTENT          = 'content';
+    public const FIELD_IMAGE_URL        = 'image_url';
 
     public const FILLABLE = [
         self::FIELD_USER_ID,
@@ -27,5 +28,6 @@ interface GigFields
         self::FIELD_IS_HIGHLIGHTED,
         self::FIELD_IS_ACTIVE,
         self::FIELD_CONTENT,
+        self::FIELD_IMAGE_URL
     ];
 }

@@ -7,6 +7,7 @@ use App\Http\Requests\Job\Update;
 use App\Models\Config;
 use App\Models\JobBoard\Portfolio\Portfolio as Model;
 use App\Models\JobBoard\Portfolio\PortfolioType;
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -115,7 +116,9 @@ class Portfolio extends Controller
      */
     public function myPortfolio()
     {
-        $model = Model::find(Auth::id());
+        /** @var User $user */
+        $user = User::find(Auth::id());
+        $model = $user->getAttribute(User::$REL_PORTFOLIO);
 
         return view(Config::getTheme() . "$this->path.preview", compact('model'));
     }
