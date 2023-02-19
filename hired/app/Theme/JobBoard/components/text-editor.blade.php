@@ -1,9 +1,10 @@
 @props([
     'text' => '',
-    'name' => ''
+    'name' => '',
+    'maxlength' => 50
 ])
 <div >
-    <textarea id="editor" name="{{$name}}">
+    <textarea id="editor" name="{{$name}}" maxlength="{{$maxlength}}">
         {{$text}}
     </textarea>
 </div>

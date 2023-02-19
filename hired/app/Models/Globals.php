@@ -67,7 +67,7 @@ interface Globals
             'label' => 'Agencies'
         ],
         [
-            'route' => 'user.portfolio.my-portfolio',
+            'route' => 'user.portfolio.preview',
             'label' => 'My Portfolio'
         ],
         [

@@ -28,11 +28,12 @@
                     <div class="card mt-3 text-dark">
                         <h3 class="card-title">About:</h3>
                         <div class="card-text">
-                            <form method="POST" action="{{route('portfolio.update', $model)}}">
+                            <form method="POST" action="{{route('user.portfolio.update.about')}}">
                                 @csrf
                                 <x-jobboard::components.text-editor
                                     :text="$model->getAttribute(Model::FIELD_ABOUT)"
                                     :name="'about'"
+                                    :maxlength="1000"
                                 />
                                 <button type="submit" class="w-100 mb-2 btn btn-lg rounded-3 btn-outline-dark">Save</button>
                             </form>
