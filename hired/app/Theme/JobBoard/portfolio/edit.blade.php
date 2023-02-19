@@ -28,7 +28,14 @@
                     <div class="card mt-3 text-dark">
                         <h3 class="card-title">About:</h3>
                         <div class="card-text">
-                            {!! $model->getAttribute(Model::FIELD_ABOUT) !!}
+                            <form method="POST" action="{{route('portfolio.update', $model)}}">
+                                @csrf
+                                <x-jobboard::components.text-editor
+                                    :text="$model->getAttribute(Model::FIELD_ABOUT)"
+                                    :name="'about'"
+                                />
+                                <button type="submit" class="w-100 mb-2 btn btn-lg rounded-3 btn-outline-dark">Save</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -54,10 +61,10 @@
                                 <div class="carousel-inner">
                                     @foreach($model->getAttribute(Model::$REL_PROJECTS) as $project)
                                         @php
-                                        $active = '';
-                                        if($project === $model->getAttribute(Model::$REL_PROJECTS)->first()) {
-                                            $active = 'active';
-                                        }
+                                            $active = '';
+                                            if($project === $model->getAttribute(Model::$REL_PROJECTS)->first()) {
+                                                $active = 'active';
+                                            }
                                         @endphp
                                         <div class="carousel-item {{$active}}">
                                             <img
@@ -86,7 +93,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>

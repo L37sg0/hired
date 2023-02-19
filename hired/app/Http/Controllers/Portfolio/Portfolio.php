@@ -120,7 +120,7 @@ class Portfolio extends Controller
         $user = User::find(Auth::id());
         $model = $user->getAttribute(User::$REL_PORTFOLIO);
 
-        return view(Config::getTheme() . "$this->path.preview", compact('model'));
+        return view(Config::getTheme() . "$this->path.edit", compact('model'));
     }
 
     /**
@@ -147,7 +147,11 @@ class Portfolio extends Controller
     {
         $model = Model::find($id);
 
-        $model->fill([])->save();
+        if ($request->get('about')) {
+            $model->fill([
+                Model::FIELD_ABOUT => $request->get('about')
+            ])->save();
+        }
 
         Session::flash("success", __("messages.success.$this->path.updated"));
 
