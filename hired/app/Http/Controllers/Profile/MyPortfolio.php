@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Job\Update;
 use App\Models\Config;
 use App\Models\JobBoard\Portfolio\Portfolio as Model;
 use App\Models\User;
@@ -11,9 +10,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 class MyPortfolio extends Controller
 {
@@ -33,26 +32,10 @@ class MyPortfolio extends Controller
     }
 
     /**
-     * @param Update $request
+     * @param Request $request
      * @return Application|RedirectResponse|Redirector
      */
-    public function create(Update $request)
-    {
-        $model = new Model();
-
-        $model->fill([])->save();
-
-        Session::flash("success", __("messages.success.$this->path.created"));
-
-        return redirect(route("$this->path.list"));
-    }
-
-    /**
-     * @param Update $request
-     * @param $id
-     * @return Application|RedirectResponse|Redirector
-     */
-    public function updateAbout(Update $request)
+    public function updateAbout(Request $request)
     {
         /** @var User $user */
         $user = User::find(Auth::id());
@@ -65,18 +48,35 @@ class MyPortfolio extends Controller
         return redirect(route("user.$this->path.preview"));
     }
 
-    /**
-     * @param $id
-     * @return Application|RedirectResponse|Redirector
-     */
-    public function destroy($id)
-    {
-        $model = Model::find($id);
+    public function updateAvatar(Request $request) {
 
-        $model->delete();
-        Session::flash("success", __("messages.success.$this->path.deleted"));
+        /** @var User $user */
+        $user = User::find(Auth::id());
+        $model = $user->getAttribute(User::$REL_PORTFOLIO);
 
-        return redirect(route("$this->path.list"));
+        $oldAvatar = $model->getAttribute(Model::FIELD_AVATAR_URL) ?? null;
+
+        $userId = $user->getAttribute(User::FIELD_ID);
+        $newAvatar = $request->file('avatar')->storePublicly("public/avatars/$userId");
+        if ($newAvatar) {
+            $model->fill([
+                Model::FIELD_AVATAR_URL => str_replace('public', 'storage', $newAvatar)
+            ])->save();
+        }
+
+        if ($oldAvatar) {
+            // find old avatar on filesystem and delete it
+        }
+
+        return redirect(route("user.$this->path.preview"));
+    }
+
+    public function updateExperiences(Request $request) {
+
+    }
+
+    public function updateProjects(Request $request) {
+
     }
 
 }

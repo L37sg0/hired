@@ -15,8 +15,14 @@
                 <div class="col-md-6">
                     <div class="card mt-3 text-dark">
                         <img class="rounded mx-auto d-block my-2"
-                             src="{{$model->getAttribute(Model::FIELD_AVATAR_URL)}}"
+                             src="{{asset($model->getAttribute(Model::FIELD_AVATAR_URL))}}"
                              width="150" height="150">
+                        <form method="POST" action="{{route('user.portfolio.update.avatar')}}"
+                              enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" required name="avatar">
+                            <button type="submit" class="btn btn-dark">Update Avatar</button>
+                        </form>
                         <h3 class="card-title text-dark">{{$model->getAttribute(Model::$REL_USER)->getAttribute(User::FIELD_NAME)}}</h3>
                         <p>Location: City / Country</p>
                         <p>Email: <a href="#">email@example.com</a></p>
