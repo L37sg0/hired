@@ -1,15 +1,13 @@
-{{--@props(['disabled' => false])--}}
-
-{{--<input {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge(['class' => '']) !!}>--}}
 @props([
     'label' => '',
     'name' => '',
     'placeholder' => '',
     'value' => ''
 ])
+
 <div class="form-group">
     <label for="{{$name}}">{{$label}}</label>
-    <input type="text"
+    <input type="date"
            class="form-control rounded-3"
            id="{{$name}}"
            name="{{$name}}"

@@ -60,7 +60,7 @@ class MyPortfolio extends Controller
         $newAvatar = $request->file('avatar')->storePublicly("public/avatars/$userId");
         if ($newAvatar) {
             $model->fill([
-                Model::FIELD_AVATAR_URL => str_replace('public', 'storage', $newAvatar)
+                Model::FIELD_AVATAR_URL => str_replace('public', '/storage', $newAvatar)
             ])->save();
         }
 

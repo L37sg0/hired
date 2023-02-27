@@ -14,15 +14,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card mt-3 text-dark">
-                        <img class="rounded mx-auto d-block my-2"
-                             src="{{asset($model->getAttribute(Model::FIELD_AVATAR_URL))}}"
-                             width="150" height="150">
-                        <form method="POST" action="{{route('user.portfolio.update.avatar')}}"
-                              enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" required name="avatar">
-                            <button type="submit" class="btn btn-dark">Update Avatar</button>
-                        </form>
+                        <x-jobboard::components.form-add-avatar
+                            :image="$model->getAttribute(Model::FIELD_AVATAR_URL)"
+                            :route="route('user.portfolio.update.avatar')"
+                        />
                         <h3 class="card-title text-dark">{{$model->getAttribute(Model::$REL_USER)->getAttribute(User::FIELD_NAME)}}</h3>
                         <p>Location: City / Country</p>
                         <p>Email: <a href="#">email@example.com</a></p>
@@ -59,6 +54,41 @@
                                 <p>{{$experience->getAttribute(Experience::FIELD_DESCRIPTION)}}</p>
                                 <br>
                             @endforeach
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-outline-dark"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#add-project-form"
+                                        type="button">
+                                    Add New
+                                </button>
+                                <div class="modal fade" id="add-project-form" tabindex="-1"
+                                     aria-labelledby="add-project-form"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="add-project-form-title">Add Experience</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <x-jobboard::components.form-add-experience/>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+
                         </div>
                     </div>
                     <div class="card mt-3 text-dark">
@@ -97,6 +127,41 @@
                                     <span class="visually-hidden">Next</span>
                                 </button>
                             </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-outline-dark"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#add-experience-form"
+                                        type="button">
+                                    Add New
+                                </button>
+                                <div class="modal fade" id="add-experience-form" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="add-experience-form-title">Add Experience</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <x-jobboard::components.form-add-project/>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+
                         </div>
                     </div>
                 </div>

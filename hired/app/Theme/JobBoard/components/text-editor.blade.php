@@ -1,17 +1,19 @@
 @props([
-    'text' => '',
     'name' => '',
+    'label' => '',
+    'text' => '',
     'maxlength' => 50
 ])
 <div >
-    <textarea id="editor" name="{{$name}}" maxlength="{{$maxlength}}">
+    <label for="{{$name}}">{{$label}}</label>
+    <textarea id="{{$name}}" name="{{$name}}" maxlength="{{$maxlength}}">
         {{$text}}
     </textarea>
 </div>
 <script src="{{asset('js/ckeditor.js')}}"></script>
 <script>
     ClassicEditor
-        .create(document.querySelector('#editor'), {
+        .create(document.querySelector('#{{$name}}'), {
             toolbar: ['heading', '|', 'bold', 'italic', 'link']
         })
         .then(editor => {
