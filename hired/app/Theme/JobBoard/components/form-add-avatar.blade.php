@@ -2,21 +2,6 @@
     'route' => '#',
     'image' => ''
 ])
-
-{{--<div class="avatar-container">--}}
-{{--    <img class="avatar-image rounded mx-auto d-block my-2"--}}
-{{--         src="{{$image}}"--}}
-{{--         width="150" height="150">--}}
-{{--    <div class="middle">--}}
-{{--        <form method="POST" action="{{$route}}"--}}
-{{--              enctype="multipart/form-data">--}}
-{{--            @csrf--}}
-{{--            <x-jobboard::components.file-input :name="'avatar'"/>--}}
-{{--            <button type="submit" class="btn btn-dark">Update Avatar</button>--}}
-{{--        </form>--}}
-{{--    </div>--}}
-{{--</div>--}}
-
 <form id="file-upload-form"
       class="uploader"
       method="POST"
@@ -24,9 +9,7 @@
       enctype="multipart/form-data">
     @csrf
     <div class="avatar-container">
-        <input id="file-upload" type="file" name="fileUpload" accept="image/*" hidden="hidden" style="display: none;"/>
-{{--        <input type="file" id="selectedFile" style="display: none;"/>--}}
-{{--        <input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();"/>--}}
+        <input id="file-upload" type="file" name="fileUpload" accept="image/*" hidden="hidden"/>
         <label for="file-upload" id="file-drag">
             <img id="file-image"
                 src="{{$image}}"
@@ -40,15 +23,12 @@
                     <div id="notimage" class="hidden"></div>
                     <span id="file-upload-btn" class="btn btn-outline-dark">Select a file</span>
                 </div>
+                <button type="submit" class="mt-3 btn btn-dark">Update</button>
                 <div id="response" class="hidden">
                     <div id="messages"></div>
-{{--                <progress class="progress" id="file-progress" value="0">--}}
-{{--                    <span>0</span>%--}}
-{{--                </progress>--}}
                 </div>
             </div>
         </label>
-        <button type="submit" class="middle btn btn-dark">Update</button>
     </div>
 </form>
 <style>
