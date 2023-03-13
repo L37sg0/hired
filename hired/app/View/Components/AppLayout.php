@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Globals;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
@@ -12,6 +13,6 @@ class AppLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.app');
+        return view(Globals::THEME . '::' . 'layout.app');
     }
 }

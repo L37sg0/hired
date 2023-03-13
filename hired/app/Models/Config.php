@@ -11,4 +11,8 @@ class Config extends Model implements ConfigFields
 
     protected $table    = self::TABLE_NAME;
     protected $fillable = self::FILLABLE;
+
+    public static function getTheme() {
+        return Globals::THEME . '::';
+    }
 }

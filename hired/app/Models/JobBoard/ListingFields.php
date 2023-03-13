@@ -22,6 +22,7 @@ interface ListingFields
     public const FIELD_PRICE_VALUE      = 'price_value';
     public const FIELD_WORKING_HOURS    = 'working_hours';
     public const FIELD_APPLY_LINK       = 'apply_link';
+    public const FIELD_IMAGE_URL        = 'image_url';
 
     public const FILLABLE = [
         self::FIELD_USER_ID,
@@ -36,6 +37,7 @@ interface ListingFields
         self::FIELD_PRICE_VALUE,
         self::FIELD_WORKING_HOURS,
         self::FIELD_APPLY_LINK,
+        self::FIELD_IMAGE_URL
     ];
 
 }
