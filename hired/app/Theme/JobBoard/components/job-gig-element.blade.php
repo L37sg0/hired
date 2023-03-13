@@ -9,7 +9,7 @@
 
 <div class="col">
     <div class="card">
-        <img src="https://www.yola.com/ws/media-library/3a75df090769446bae2d6abd655e1b23/yola-features-cover-1.png">
+        <img alt="image" src="https://www.yola.com/ws/media-library/3a75df090769446bae2d6abd655e1b23/yola-features-cover-1.png">
         <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
              xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
              preserveAspectRatio="xMidYMid slice" focusable="false">

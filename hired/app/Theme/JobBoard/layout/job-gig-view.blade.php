@@ -6,7 +6,7 @@
                 <!-- Job / Gig Image   -->
                 <div class="col-12 col-sm-12">
                     <div class="card">
-                        <img
+                        <img alt="image"
                             src="https://www.yola.com/ws/media-library/3a75df090769446bae2d6abd655e1b23/yola-features-cover-1.png">
                     </div>
                 </div>
@@ -109,7 +109,8 @@
                     <div class="card">
 
                         <!-- Publisher Logo / Avatar-->
-                        <img src="https://www.yola.com/ws/media-library/3a75df090769446bae2d6abd655e1b23/yola-features-cover-1.png">
+                        <img alt="publisher-avatar"
+                             src="https://www.yola.com/ws/media-library/3a75df090769446bae2d6abd655e1b23/yola-features-cover-1.png">
 
                         <!-- Publisher info -->
                         <div class="card-body">
@@ -118,7 +119,6 @@
                                 <li><span>Phone: </span>000 000 000</li>
                                 <li><span>Email: </span><a href="#">email@example.com</a></li>
 
-                            </ul>
                             </ul>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">

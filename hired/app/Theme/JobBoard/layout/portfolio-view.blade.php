@@ -4,7 +4,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card mt-3 text-dark">
-                        <img class="rounded mx-auto d-block my-2"
+                        <img alt="avatar-image"
+                            class="rounded mx-auto d-block my-2"
                              src="https://cdnb.artstation.com/p/assets/images/images/002/920/897/large/gilbert-han-jay-scott-color.jpg?1467285280"
                              width="150" height="150">
                         <h3 class="card-title text-dark">Nerdy User Name</h3>
@@ -18,37 +19,37 @@
                     <div class="card mt-3 text-dark">
                         <h3 class="card-title">About:</h3>
                         <div class="card-text">
-                            <p> Hi I'm an nerdy developer. I'm reading a lot of documentation and do a lot of
+                            <p> Hi I'm a nerdy developer. I'm reading a lot of documentation and do a lot of
                                 programming.</p>
                             <br>
-                            <p> Hi I'm an nerdy developer. I'm reading a lot of documentation and do a lot of
+                            <p> Hi I'm a nerdy developer. I'm reading a lot of documentation and do a lot of
                                 programming.</p>
                             <br>
-                            <p> Hi I'm an nerdy developer. I'm reading a lot of documentation and do a lot of
+                            <p> Hi I'm a nerdy developer. I'm reading a lot of documentation and do a lot of
                                 programming.</p>
                             <br>
-                            <p> Hi I'm an nerdy developer. I'm reading a lot of documentation and do a lot of
+                            <p> Hi I'm a nerdy developer. I'm reading a lot of documentation and do a lot of
                                 programming.</p>
                             <br>
-                            <p> Hi I'm an nerdy developer. I'm reading a lot of documentation and do a lot of
+                            <p> Hi I'm a nerdy developer. I'm reading a lot of documentation and do a lot of
                                 programming.</p>
                             <br>
-                            <p> Hi I'm an nerdy developer. I'm reading a lot of documentation and do a lot of
+                            <p> Hi I'm a nerdy developer. I'm reading a lot of documentation and do a lot of
                                 programming.</p>
                             <br>
-                            <p> Hi I'm an nerdy developer. I'm reading a lot of documentation and do a lot of
+                            <p> Hi I'm a nerdy developer. I'm reading a lot of documentation and do a lot of
                                 programming.</p>
                             <br>
-                            <p> Hi I'm an nerdy developer. I'm reading a lot of documentation and do a lot of
+                            <p> Hi I'm a nerdy developer. I'm reading a lot of documentation and do a lot of
                                 programming.</p>
                             <br>
-                            <p> Hi I'm an nerdy developer. I'm reading a lot of documentation and do a lot of
+                            <p> Hi I'm a nerdy developer. I'm reading a lot of documentation and do a lot of
                                 programming.</p>
                             <br>
-                            <p> Hi I'm an nerdy developer. I'm reading a lot of documentation and do a lot of
+                            <p> Hi I'm a nerdy developer. I'm reading a lot of documentation and do a lot of
                                 programming.</p>
                             <br>
-                            <p> Hi I'm an nerdy developer. I'm reading a lot of documentation and do a lot of
+                            <p> Hi I'm a nerdy developer. I'm reading a lot of documentation and do a lot of
                                 programming.</p>
                             <br>
                         </div>

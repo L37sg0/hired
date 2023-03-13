@@ -21,7 +21,7 @@
                     <!-- Job Image   -->
                     <div class="col-12 col-sm-12">
                         <div class="card">
-                            <img
+                            <img alt="job-image"
                                 src="{{$imageUrl}}">
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                     <div class="card mb-3 text-dark">
 
                         <!-- Publisher Avatar-->
-                        <img
+                        <img alt="publisher-avatar"
                             src="{{$portfolio->getAttribute(Portfolio::FIELD_AVATAR_URL)}}">
 
                         <!-- Publisher info -->

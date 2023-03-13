@@ -16,7 +16,8 @@
 
 <div class="col">
     <div class="card mt-3 text-dark">
-        <img class="rounded mx-auto d-block my-2"
+        <img alt="avatar-image"
+            class="rounded mx-auto d-block my-2"
              src="{{$model->getAttribute(Model::FIELD_AVATAR_URL)}}"
              width="150" height="150">
         <h3 class="card-title text-dark">{{$model->getAttribute(Model::$REL_USER)->getAttribute(User::FIELD_NAME)}}</h3>
