@@ -10,7 +10,8 @@ use App\Models\JobBoard\Listing;
 <section class="container mx-auto p-6 font-mono">
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
         <div class="w-full overflow-x-auto">
-            <table aria-description="data" class="w-full">
+            <table class="w-full">
+                <caption>Data</caption>
                 <thead>
                 <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                     <th class="px-4 py-3">Title</th>
